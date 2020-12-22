@@ -15,9 +15,17 @@ def collatz(n, i):
         return collatz(3 * n + 1, i + 1)
 
 # Grab how many iterations it takes for the Collatz to tend towards 1
-# Populate list for values for 1 through 100
+# Populate list for values for 1 through input
 colList = []
-for i in range(1, 101, 1):
+## TODO: Make sure the input is valid!
+maxVal = int(input())
+
+if maxVal < 1:
+    print("INVALID INPUT")
+    print("Testing with default valid of 100")
+    maxVal = 100
+
+for i in range(1, maxVal, 1):
     colList.append(collatz(i, 0))
 
 plt.plot(colList)
